@@ -11,8 +11,8 @@ import helper as analytics
 from datasets import Dataset
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
-import time
-import helper
+from utils import clean_response
+from model_helpers import generate_answers, load_pipeline
 from dotenv import load_dotenv
 
 # Set CUDA_VISIBLE_DEVICES to limit GPUs
@@ -27,21 +27,6 @@ TEST_PROMPTS = "../../prompts/domain_promts_few_shot.json"
 
 batch_size = 8
 
-
-def clean_response(response):
-    try:
-        if "yes" in response.lower():
-            return 1
-        elif "no" in response.lower():
-            return 0
-        else:
-            return -1
-    except:
-        return -1
-
-# Function to insert product descriptions and examples into the prompt
-
-
 def insert_product_descriptions(prompt_template: str, product1: str, product2: str, examples: list):
     # Replace placeholder texts with actual product descriptions and examples
     example_str = "\n".join(
@@ -53,19 +38,7 @@ def insert_product_descriptions(prompt_template: str, product1: str, product2: s
     return messages
 
 
-# Function to generate answers using the pipeline
-def generate_answers(messages, hf_pipeline):
-    # Using KeyDataset for efficient batch processing
-    dataset = Dataset.from_dict({"text": messages})
-    results = []
-    for out in hf_pipeline(KeyDataset(dataset, "text"), max_new_tokens=5):
-        # Adjust based on your model output
-        results.append(out[0]['generated_text'])
-    return results
-
 # Optimized Cosine Similarity with Matrix Operations
-
-
 def find_most_similar_examples(test_embedding, train_df, top_n=6):
     # Convert lists of embeddings to a numpy array if not already
     train_embeddings = np.array(list(train_df['embedding'].values))
@@ -82,39 +55,7 @@ def find_most_similar_examples(test_embedding, train_df, top_n=6):
     return most_similar_examples
 
 
-# Initialize the model and tokenizer
-tokenizer = AutoTokenizer.from_pretrained(
-    CHECKPOINT_PATH,
-    token=os.getenv("HUGGINGFACE_TOKEN")
-)
-
-tokenizer.padding_side = "left"
-tokenizer.pad_token_id = tokenizer.eos_token_id
-
-compute_dtype = getattr(torch, "float16")
-
-quant_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_compute_dtype=compute_dtype,
-    bnb_4bit_use_double_quant=False,
-)
-
-model = AutoModelForCausalLM.from_pretrained(
-    CHECKPOINT_PATH,
-    device_map="auto",
-    quantization_config=quant_config,
-    token=os.getenv("HUGGINGFACE_TOKEN"),
-    cache_dir=os.getenv("CHACHE_DIR"),
-)
-
-# Set up the text generation pipeline without specifying device_map
-hf_pipeline = pipeline(
-    "text-generation",
-    model=model,
-    tokenizer=tokenizer,
-    batch_size=batch_size,  # Adjust batch size as needed
-)
+hf_pipeline = load_pipeline(CHECKPOINT_PATH, batch_size)
 
 
 datasets = [

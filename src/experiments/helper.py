@@ -137,12 +137,12 @@ def draw_scores(df, sort_order: list[str]= None):
     print(std_values)
 
 
-def get_all_files_in_directory(directory_path: str):
+def get_all_files_in_directory(directory_path: str, file_type: str = ".json"):
     file_paths = []
     for root, dirs, files in os.walk(directory_path):
         for name in files:
             # Only process JSON files
-            if name.endswith(".json"):
+            if name.endswith(file_type):
                 file_paths.append(os.path.join(root, name))
     return file_paths
 

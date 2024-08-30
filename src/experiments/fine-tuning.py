@@ -1,8 +1,5 @@
 import wandb
 from dotenv import load_dotenv
-from helper import calculate_scores
-from utils import clean_response
-from sklearn.metrics import f1_score, precision_score, recall_score
 import pandas as pd
 import random
 import numpy as np
@@ -14,18 +11,19 @@ from transformers import (
     AutoTokenizer,
     BitsAndBytesConfig,
 )
+
 from datasets import load_dataset
 import torch
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0,2,4,5,7"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,3,6"
 
 # Load OPENAI_API_KEY from .env file
 load_dotenv()
 
 BASE_PATH = "../../results"
 MODEL_ID = "meta-llama/Meta-Llama-3.1-8B-Instruct"
-TRAINING_FILE_PATH = "../../data/wdc/synthetic/4o/textual_example/interesting/filtered_with_small_with_explanations.csv"
-DATASET_NAME = "wdc-small-synthetic-filtered-interesting-with-explanations"
+TRAINING_FILE_PATH = "../../data/dblp-scholar/dblp-scholar-train.csv"
+DATASET_NAME = "dblp-scholar"
 
 # set seeds
 seed_value = 42
