@@ -1,0 +1,11 @@
+,checkpoint_path,checkpoint_number,epoch,f1,precision,recall
+0,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-acm/no_explanations/2024-08-14-20-37-31/checkpoint-84,84,1,0.9276974416017798,0.9164835164835164,0.9391891891891891
+1,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-acm/no_explanations/2024-08-14-20-37-31/checkpoint-168,168,2,0.9464082098061574,0.9584295612009238,0.9346846846846847
+2,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-acm/no_explanations/2024-08-14-20-37-31/checkpoint-252,252,3,0.9508196721311475,0.9235668789808917,0.9797297297297297
+3,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-acm/no_explanations/2024-08-14-20-37-31/checkpoint-336,336,4,0.9429569266589057,0.9759036144578314,0.9121621621621622
+4,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-acm/no_explanations/2024-08-14-20-37-31/checkpoint-420,420,5,0.9632925472747497,0.9516483516483516,0.9752252252252253
+5,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-acm/no_explanations/2024-08-14-20-37-31/checkpoint-504,504,6,0.9696969696969697,0.9664429530201343,0.972972972972973
+6,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-acm/no_explanations/2024-08-14-20-37-31/checkpoint-588,588,7,0.9652855543113102,0.9599109131403119,0.9707207207207207
+7,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-acm/no_explanations/2024-08-14-20-37-31/checkpoint-672,672,8,0.9697648376259799,0.9643652561247216,0.9752252252252253
+8,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-acm/no_explanations/2024-08-14-20-37-31/checkpoint-756,756,9,0.9720044792833147,0.9665924276169265,0.9774774774774775
+9,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-acm/no_explanations/2024-08-14-20-37-31/checkpoint-840,840,10,0.9698324022346368,0.9623059866962306,0.9774774774774775

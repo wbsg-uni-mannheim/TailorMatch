@@ -1,0 +1,11 @@
+,checkpoint_path,checkpoint_number,epoch,f1,precision,recall
+0,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc-small-with-synthetic/2024-08-20-14-08-42/checkpoint-142,142,1,0.7623318385650224,0.6910569105691057,0.85
+1,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc-small-with-synthetic/2024-08-20-14-08-42/checkpoint-284,284,2,0.738045738045738,0.7683982683982684,0.71
+2,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc-small-with-synthetic/2024-08-20-14-08-42/checkpoint-426,426,3,0.70995670995671,0.7735849056603774,0.656
+3,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc-small-with-synthetic/2024-08-20-14-08-42/checkpoint-568,568,4,0.7467204843592331,0.7535641547861507,0.74
+4,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc-small-with-synthetic/2024-08-20-14-08-42/checkpoint-711,711,5,0.7697715289982425,0.6865203761755486,0.876
+5,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc-small-with-synthetic/2024-08-20-14-08-42/checkpoint-853,853,6,0.7348178137651822,0.7438524590163934,0.726
+6,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc-small-with-synthetic/2024-08-20-14-08-42/checkpoint-995,995,7,0.750996015936255,0.748015873015873,0.754
+7,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc-small-with-synthetic/2024-08-20-14-08-42/checkpoint-1137,1137,8,0.7518656716417911,0.7045454545454546,0.806
+8,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc-small-with-synthetic/2024-08-20-14-08-42/checkpoint-1279,1279,9,0.7589545014520813,0.7354596622889306,0.784
+9,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc-small-with-synthetic/2024-08-20-14-08-42/checkpoint-1420,1420,10,0.7552986512524085,0.7286245353159851,0.784

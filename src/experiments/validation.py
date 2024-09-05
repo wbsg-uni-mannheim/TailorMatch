@@ -7,20 +7,21 @@ import pandas as pd
 import torch
 import os
 from test_model import process_datasets
+from utils import insert_product_descriptions_array, clean_response
 
 from model_helpers import generate_answers, load_pipeline
-os.environ["CUDA_VISIBLE_DEVICES"] = "0,4,5"
+os.environ["CUDA_VISIBLE_DEVICES"] = "1,4,5,6,7"
 
 # Load OPENAI_API_KEY from .env file
 load_dotenv()
 
 
-CHECKPOINT_FOLDER = "../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc-small-synthetic-filtered-interesting-with-explanations/2024-08-28-08-11-22"
+CHECKPOINT_FOLDER = "../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc_no_quantization/2024-09-01-17-59-27"
 VALIDATION_PROMPT_PATH = "../../prompts/test_prompt.json"
 VALIDATION_FILE_PATH = "../../data/wdc/preprocessed_wdcproducts80cc20rnd000un_valid_small.pkl"
 
 TEST_PROMPTS = "../../prompts/domain_promts.json"
-WANDDB_ID = "e4gkovo4"
+WANDDB_ID = "a1ozfp11"
 batch_size = 32
 device_map = "auto"
 
@@ -36,29 +37,8 @@ def list_checkpoint_folders(directory):
     return checkpoint_folders
 
 
-def clean_response(response):
-    if "yes" in response.lower():
-        return 1
-    elif "no" in response.lower():
-        return 0
-    else:
-        return -1
-
-# Function to insert product descriptions into the prompt
-
-
-def insert_product_descriptions(prompt_template: str, product1: str, product2: str):
-    # Replace placeholder texts with actual product descriptions
-    prompt = prompt_template.replace(
-        "'Entity 1'", product1).replace("'Entity 2'", product2)
-    messages = [
-        {"role": "user", "content": prompt},
-    ]
-    return messages
 
 # Function to extract the checkpoint number
-
-
 def get_checkpoint_number(path):
     return int(path.split('-')[-1])
 
@@ -98,8 +78,22 @@ for checkpoint_path in checkpoint_paths:
             title = task['title']
             prompt_template = task['prompt']
 
-            messages = [insert_product_descriptions(
-                prompt_template, row['title_left'], row['title_right']) for _, row in df.iterrows()]
+            if "dblp" in dataset['dataset_name']:
+                messages = [
+                    insert_product_descriptions_array(
+                        prompt_template=prompt_template,
+                        product1=f"{row['title_left']}; {row['authors_left']}; {row['venue_left']}; {row['year_left']}",
+                        product2=f"{row['title_right']}; {row['authors_right']}; {row['venue_right']}; {row['year_right']}"
+                    )
+                    for _, row in df.iterrows()
+                ]
+            else:
+                messages = [
+                    insert_product_descriptions_array(
+                        prompt_template, row['title_left'], row['title_right']
+                    )
+                    for _, row in df.iterrows()
+                ]
 
             try:
                 responses = generate_answers(messages, hf_pipeline)

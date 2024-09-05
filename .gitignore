@@ -169,4 +169,21 @@ results/amazon-google/70b/*/adapter_model.safetensors
 results/amazon-google/70b/*/optimizer.pt
 
 src/experiments/wandb
-results
+# Ignore any folder containing 'checkpoint' in its name
+*/checkpoint-*/
+
+# ignore model files
+adapter*
+optimizer*
+tokenizer*
+validation_results.json
+scheduler.pt
+special_tokens_map.json
+rng_state.pth
+trainer_state.json
+training_args.bin
+
+# Ignore README.md files only in the llama directory and its subdirectories
+results/meta-llama/**/README.md
+
+results/meta-llama/**/*.json

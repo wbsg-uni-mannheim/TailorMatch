@@ -90,16 +90,15 @@ def process_datasets(datasets, hf_pipeline, test_prompts_path, checkpoint_folder
 
 if __name__ == "__main__":
     # Set CUDA_VISIBLE_DEVICES to limit GPUs
-    os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
+    os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,6,7"
     
     CHECKPOINT_FOLDERS = [
-        "../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc-medium/2024-08-27-13-51-15",
-        "../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/large/2024-07-29-16-35-57",
-        "../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc-small-aws-explanations/2024-08-27-12-39-35"
+        "../../results/meta-llama/Meta-Llama-3.1-70B-Instruct/small/explanation/2024-08-10-13-50-12_explanation"
     ]
+    
     TEST_PROMPTS = "../../prompts/domain_promts.json"
 
-    BATCH_SIZE = 64
+    BATCH_SIZE = 32
 
     datasets = [
         #{"dataset_name": "wdc-fullsize",

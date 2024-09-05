@@ -69,9 +69,9 @@ def load_pipeline(model_path, batch_size):
     model = AutoModelForCausalLM.from_pretrained(
         model_path,
         device_map="auto",
-        quantization_config=quant_config,
+        #quantization_config=quant_config,
         token=os.getenv("HUGGINGFACE_TOKEN"),
-        cache_dir=os.getenv("CACHE_DIR"),
+        cache_dir="/ceph/aasteine/fine-tuning-paper/.cache",
     )
 
     # Initialize the text generation pipeline with the model, tokenizer, and specified batch size

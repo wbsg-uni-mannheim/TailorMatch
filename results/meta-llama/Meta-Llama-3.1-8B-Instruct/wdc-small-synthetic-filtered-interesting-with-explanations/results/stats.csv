@@ -1,0 +1,25 @@
+Task,Accuracy,F1 Score,Precision,Recall,Num -1 Responses,Dataset
+domain-complex-free (Product),0.8979502834714348,0.0,0.0,0.0,0,amazon-google-full
+domain-simple-free (Product),0.8979502834714348,0.0,0.0,0.0,0,amazon-google-full
+domain-complex-force (Product),0.8979502834714348,0.0,0.0,0.0,0,amazon-google-full
+domain-simple-force (Product),0.8979502834714348,0.0,0.0,0.0,0,amazon-google-full
+domain-complex-free (Product),0.8888888888888888,0.0,0.0,0.0,0,wdc-fullsize
+domain-simple-free (Product),0.8891111111111111,0.003992015968063872,1.0,0.002,0,wdc-fullsize
+domain-complex-force (Product),0.8895555555555555,0.011928429423459244,1.0,0.006,0,wdc-fullsize
+domain-simple-force (Product),0.8897777777777778,0.015873015873015872,1.0,0.008,0,wdc-fullsize
+domain-complex-free (Product),0.8924843423799582,0.0,0.0,0.0,0,abt-buy-full
+domain-simple-free (Product),0.8924843423799582,0.0,0.0,0.0,0,abt-buy-full
+domain-complex-force (Product),0.8924843423799582,0.0,0.0,0.0,0,abt-buy-full
+domain-simple-force (Product),0.8924843423799582,0.0,0.0,0.0,0,abt-buy-full
+domain-complex-free (Product),0.9058077110785749,0.0,0.0,0.0,0,walmart-amazon
+domain-simple-free (Product),0.9058077110785749,0.0,0.0,0.0,0,walmart-amazon
+domain-complex-force (Product),0.9058077110785749,0.0,0.0,0.0,0,walmart-amazon
+domain-simple-force (Product),0.9058077110785749,0.0,0.0,0.0,0,walmart-amazon
+domain-complex-free (Product),0.8136537791710206,0.0,0.0,0.0,0,dblp-scholar
+domain-simple-free (Product),0.8136537791710206,0.0,0.0,0.0,0,dblp-scholar
+domain-complex-force (Product),0.8136537791710206,0.0,0.0,0.0,0,dblp-scholar
+domain-simple-force (Product),0.8131313131313131,0.0,0.0,0.0,0,dblp-scholar
+domain-complex-free (Product),0.8204609785685403,0.0,0.0,0.0,0,dblp-acm
+domain-simple-free (Product),0.8208653457339264,0.0044943820224719105,1.0,0.0022522522522522522,0,dblp-acm
+domain-complex-force (Product),0.8200566114031541,0.0,0.0,0.0,0,dblp-acm
+domain-simple-force (Product),0.8204609785685403,0.008928571428571428,0.5,0.0045045045045045045,0,dblp-acm

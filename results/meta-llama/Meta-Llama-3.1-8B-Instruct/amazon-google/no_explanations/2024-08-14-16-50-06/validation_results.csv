@@ -1,0 +1,11 @@
+,Unnamed: 0.2,Unnamed: 0.1,Unnamed: 0,checkpoint_path,checkpoint_number,epoch,f1,precision,recall
+0,0,0,0,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/amazon-google/no_explanations/2024-08-14-16-50-06/checkpoint-60,60,1,0.0165975103734439,0.2857142857142857,0.0085470085470085
+1,1,1,1,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/amazon-google/no_explanations/2024-08-14-16-50-06/checkpoint-121,121,2,0.4137931034482758,0.631578947368421,0.3076923076923077
+2,2,2,2,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/amazon-google/no_explanations/2024-08-14-16-50-06/checkpoint-181,181,3,0.1660377358490566,0.7096774193548387,0.094017094017094
+3,3,3,3,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/amazon-google/no_explanations/2024-08-14-16-50-06/checkpoint-242,242,4,0.33003300330033,0.7246376811594203,0.2136752136752136
+4,4,4,4,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/amazon-google/no_explanations/2024-08-14-16-50-06/checkpoint-302,302,5,0.3322475570032573,0.6986301369863014,0.2179487179487179
+5,5,5,5,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/amazon-google/no_explanations/2024-08-14-16-50-06/checkpoint-363,363,6,0.3564356435643564,0.782608695652174,0.2307692307692307
+6,6,6,6,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/amazon-google/no_explanations/2024-08-14-16-50-06/checkpoint-423,423,7,0.2652329749103942,0.8222222222222222,0.1581196581196581
+7,7,7,7,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/amazon-google/no_explanations/2024-08-14-16-50-06/checkpoint-484,484,8,0.2676056338028169,0.76,0.1623931623931624
+8,8,8,8,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/amazon-google/no_explanations/2024-08-14-16-50-06/checkpoint-544,544,9,0.3044982698961938,0.8,0.188034188034188
+9,9,9,9,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/amazon-google/no_explanations/2024-08-14-16-50-06/checkpoint-600,600,10,0.2915254237288135,0.7049180327868853,0.1837606837606837

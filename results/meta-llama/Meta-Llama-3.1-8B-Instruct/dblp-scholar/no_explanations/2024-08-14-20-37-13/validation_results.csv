@@ -1,0 +1,11 @@
+,checkpoint_path,checkpoint_number,epoch,f1,precision,recall
+0,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-scholar/no_explanations/2024-08-14-20-37-13/checkpoint-193,193,1,0.8892142508540751,0.9305413687436159,0.8514018691588785
+1,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-scholar/no_explanations/2024-08-14-20-37-13/checkpoint-386,386,2,0.9108069844266163,0.9199237368922784,0.9018691588785047
+2,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-scholar/no_explanations/2024-08-14-20-37-13/checkpoint-579,579,3,0.8993618065783014,0.9472595656670114,0.8560747663551402
+3,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-scholar/no_explanations/2024-08-14-20-37-13/checkpoint-772,772,4,0.9095330739299611,0.9482758620689655,0.8738317757009346
+4,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-scholar/no_explanations/2024-08-14-20-37-13/checkpoint-965,965,5,0.904055390702275,0.9600840336134454,0.8542056074766355
+5,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-scholar/no_explanations/2024-08-14-20-37-13/checkpoint-1158,1158,6,0.892462311557789,0.9652173913043478,0.8299065420560747
+6,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-scholar/no_explanations/2024-08-14-20-37-13/checkpoint-1351,1351,7,0.8966550174737893,0.962486602357985,0.8392523364485981
+7,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-scholar/no_explanations/2024-08-14-20-37-13/checkpoint-1544,1544,8,0.9142300194931774,0.955193482688391,0.8766355140186916
+8,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-scholar/no_explanations/2024-08-14-20-37-13/checkpoint-1737,1737,9,0.9047619047619048,0.9640591966173362,0.8523364485981308
+9,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/dblp-scholar/no_explanations/2024-08-14-20-37-13/checkpoint-1930,1930,10,0.8936810431293881,0.9642857142857143,0.8327102803738318

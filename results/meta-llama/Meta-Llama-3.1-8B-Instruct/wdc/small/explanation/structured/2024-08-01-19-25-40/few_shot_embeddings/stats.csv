@@ -1,0 +1,25 @@
+Task,Accuracy,F1 Score,Precision,Recall,Num -1 Responses,Dataset
+"domain-complex-free (Product, Few-Shot)",0.8979502834714348,0.00847457627118644,0.5,0.004273504273504274,0,amazon-google-full
+"domain-simple-free (Product, Few-Shot)",0.8970780636720453,0.0,0.0,0.0,0,amazon-google-full
+"domain-complex-force (Product, Few-Shot)",0.8979502834714348,0.00847457627118644,0.5,0.004273504273504274,0,amazon-google-full
+"domain-simple-force (Product, Few-Shot)",0.8983863933711296,0.016877637130801686,0.6666666666666666,0.008547008547008548,0,amazon-google-full
+"domain-complex-free (Product, Few-Shot)",0.8891111111111111,0.003992015968063872,1.0,0.002,0,wdc-fullsize
+"domain-simple-free (Product, Few-Shot)",0.89,0.019801980198019802,1.0,0.01,0,wdc-fullsize
+"domain-complex-force (Product, Few-Shot)",0.8902222222222222,0.023715415019762844,1.0,0.012,0,wdc-fullsize
+"domain-simple-force (Product, Few-Shot)",0.89,0.019801980198019802,1.0,0.01,0,wdc-fullsize
+"domain-complex-free (Product, Few-Shot)",0.8930062630480167,0.00966183574879227,1.0,0.0048543689320388345,0,abt-buy-full
+"domain-simple-free (Product, Few-Shot)",0.8924843423799582,0.009615384615384616,0.5,0.0048543689320388345,0,abt-buy-full
+"domain-complex-force (Product, Few-Shot)",0.8935281837160751,0.019230769230769232,1.0,0.009708737864077669,0,abt-buy-full
+"domain-simple-force (Product, Few-Shot)",0.8924843423799582,0.0,0.0,0.0,0,abt-buy-full
+"domain-complex-free (Product, Few-Shot)",0.9560761346998536,0.71875,0.905511811023622,0.5958549222797928,0,walmart-amazon
+"domain-simple-free (Product, Few-Shot)",0.9663250366032211,0.8011527377521613,0.9025974025974026,0.7202072538860104,0,walmart-amazon
+"domain-complex-force (Product, Few-Shot)",0.9599804782820889,0.7388535031847133,0.9586776859504132,0.6010362694300518,0,walmart-amazon
+"domain-simple-force (Product, Few-Shot)",0.9585163494387506,0.735202492211838,0.921875,0.6113989637305699,0,walmart-amazon
+"domain-complex-free (Product, Few-Shot)",0.8134796238244514,0.0,0.0,0.0,0,dblp-scholar
+"domain-simple-free (Product, Few-Shot)",0.8143504005572971,0.011131725417439703,0.75,0.005607476635514018,0,dblp-scholar
+"domain-complex-force (Product, Few-Shot)",0.8136537791710206,0.0,0.0,0.0,0,dblp-scholar
+"domain-simple-force (Product, Few-Shot)",0.8143504005572971,0.0074487895716946,1.0,0.003738317757009346,0,dblp-scholar
+"domain-complex-free (Product, Few-Shot)",0.8208653457339264,0.0044943820224719105,1.0,0.0022522522522522522,0,dblp-acm
+"domain-simple-free (Product, Few-Shot)",0.8212697128993126,0.008968609865470852,1.0,0.0045045045045045045,0,dblp-acm
+"domain-complex-force (Product, Few-Shot)",0.8216740800646988,0.013422818791946308,1.0,0.006756756756756757,0,dblp-acm
+"domain-simple-force (Product, Few-Shot)",0.8216740800646988,0.013422818791946308,1.0,0.006756756756756757,0,dblp-acm

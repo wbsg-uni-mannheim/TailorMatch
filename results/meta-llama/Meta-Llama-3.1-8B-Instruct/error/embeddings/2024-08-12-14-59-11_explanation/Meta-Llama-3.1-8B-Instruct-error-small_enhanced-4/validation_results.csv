@@ -1,0 +1,6 @@
+checkpoint_path,checkpoint_number,epoch,f1,precision,recall
+../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/error/embeddings/2024-08-12-14-59-11_explanation/Meta-Llama-3.1-8B-Instruct-error-small_enhanced-4/checkpoint-220,220,5,0.7436762225969646,0.6428571428571429,0.882
+../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/error/embeddings/2024-08-12-14-59-11_explanation/Meta-Llama-3.1-8B-Instruct-error-small_enhanced-4/checkpoint-178,178,4,0.7389418907198613,0.6523736600306279,0.852
+../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/error/embeddings/2024-08-12-14-59-11_explanation/Meta-Llama-3.1-8B-Instruct-error-small_enhanced-4/checkpoint-133,133,3,0.723996723996724,0.6130374479889042,0.884
+../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/error/embeddings/2024-08-12-14-59-11_explanation/Meta-Llama-3.1-8B-Instruct-error-small_enhanced-4/checkpoint-89,89,2,0.6847110460863204,0.5397923875432526,0.936
+../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/error/embeddings/2024-08-12-14-59-11_explanation/Meta-Llama-3.1-8B-Instruct-error-small_enhanced-4/checkpoint-44,44,1,0.0,0.0,0.0

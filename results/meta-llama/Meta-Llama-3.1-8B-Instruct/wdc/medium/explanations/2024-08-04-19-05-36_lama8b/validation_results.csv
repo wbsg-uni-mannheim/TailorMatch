@@ -1,0 +1,21 @@
+,Unnamed: 0,checkpoint_path,checkpoint_number,epoch,f1,precision,recall
+0,0,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-173,173,1,0.786,0.786,0.786
+1,1,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-346,346,2,0.7742616033755274,0.8191964285714286,0.734
+2,2,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-519,519,3,0.7568710359408034,0.8026905829596412,0.716
+3,3,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-693,693,4,0.6626650660264105,0.8288288288288288,0.552
+4,4,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-866,866,5,0.7105561861520999,0.821522309711286,0.626
+5,5,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-1039,1039,6,0.6467661691542289,0.8552631578947368,0.52
+6,6,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-1212,1212,7,0.700834326579261,0.8672566371681416,0.588
+7,7,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-1386,1386,8,0.7477876106194691,0.8366336633663366,0.676
+8,8,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-1559,1559,9,0.7096774193548387,0.8369565217391305,0.616
+9,9,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-1732,1732,10,0.7095292766934558,0.8328840970350404,0.618
+10,10,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-1905,1905,11,0.7054714784633295,0.8440111420612814,0.606
+11,11,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-2079,2079,12,0.7389830508474576,0.8493506493506493,0.654
+12,12,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-2252,2252,13,0.7436743674367436,0.8264058679706602,0.676
+13,13,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-2425,2425,14,0.6794717887154862,0.8498498498498499,0.566
+14,14,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-2598,2598,15,0.6971830985915493,0.84375,0.594
+15,15,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-2772,2772,16,0.7095292766934558,0.8328840970350404,0.618
+16,16,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-2945,2945,17,0.7266514806378133,0.843915343915344,0.638
+17,17,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-3118,3118,18,0.7164179104477612,0.8409703504043127,0.624
+18,18,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-3291,3291,19,0.7163841807909604,0.8233766233766234,0.634
+19,19,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/medium/explanations/2024-08-04-19-05-36_lama8b/checkpoint-3460,3460,20,0.7272727272727273,0.8421052631578947,0.64

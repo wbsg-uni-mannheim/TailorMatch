@@ -15,15 +15,15 @@ from transformers import (
 from datasets import load_dataset
 import torch
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,3,6"
+os.environ["CUDA_VISIBLE_DEVICES"] = "1,4,5,6,7"
 
 # Load OPENAI_API_KEY from .env file
 load_dotenv()
 
 BASE_PATH = "../../results"
 MODEL_ID = "meta-llama/Meta-Llama-3.1-8B-Instruct"
-TRAINING_FILE_PATH = "../../data/dblp-scholar/dblp-scholar-train.csv"
-DATASET_NAME = "dblp-scholar"
+TRAINING_FILE_PATH = "../../data/wdc/filtered/small/wdc_train_small_filtered.csv"
+DATASET_NAME = "wdc_no_quantization"
 
 # set seeds
 seed_value = 42
@@ -67,7 +67,6 @@ quant_config = BitsAndBytesConfig(
 # Load base model
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_ID,
-    quantization_config=quant_config,
     device_map="auto",
     token=os.getenv("HUGGINGFACE_TOKEN"),
     cache_dir=os.getenv("CHACHE_DIR"),
