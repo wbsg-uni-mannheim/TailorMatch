@@ -1,391 +1,0 @@
-The cache for model files in Transformers v4.22.0 has been updated. Migrating your old cache. This is a one-time only operation. You can interrupt this and resume the migration later on by calling `transformers.utils.move_cache()`.
-0it [00:00, ?it/s]0it [00:00, ?it/s]
-2024-08-31 01:23:39.894841: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-08-31 01:23:39.894931: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-08-31 01:23:39.919423: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-08-31 01:23:40.054687: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2024-08-31 01:23:50.328895: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:10<00:30, 10.03s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:21<00:21, 10.91s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:32<00:10, 10.72s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:33<00:00,  7.00s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:33<00:00,  8.34s/it]
-wandb: Currently logged in as: aaron98. Use `wandb login --relogin` to force relogin
-wandb: wandb version 0.17.8 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.17.5
-wandb: Run data is saved locally in /ceph/aasteine/fine-tuning-paper/src/experiments/wandb/run-20240831_012901-64nd8gnb
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Resuming run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar
-wandb: ⭐️ View project at https://wandb.ai/aaron98/First%20Paper
-wandb: 🚀 View run at https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: - 0.000 MB of 0.004 MB uploadedwandb: \ 0.000 MB of 0.004 MB uploadedwandb: | 0.015 MB of 0.015 MB uploadedwandb:                                                                                
-wandb: 
-wandb: Run history:
-wandb:     epoch ▁
-wandb:        f1 ▁
-wandb: precision ▁
-wandb:    recall ▁
-wandb: 
-wandb: Run summary:
-wandb:                    epoch 1
-wandb:                       f1 0.92372
-wandb:                precision 0.92243
-wandb:                   recall 0.92502
-wandb:               total_flos 1262515164807168000
-wandb:              train/epoch 9.98456
-wandb:        train/global_step 2910
-wandb:          train/grad_norm 0.34858
-wandb:      train/learning_rate 0.0
-wandb:               train/loss 0.36
-wandb:               train_loss 0.56449
-wandb:            train_runtime 28004.0865
-wandb: train_samples_per_second 4.163
-wandb:   train_steps_per_second 0.104
-wandb: 
-wandb: 🚀 View run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar at: https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: ⭐️ View project at: https://wandb.ai/aaron98/First%20Paper
-wandb: Synced 3 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20240831_012901-64nd8gnb/logs
-wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:03<00:09,  3.06s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:06<00:06,  3.18s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:09<00:03,  3.17s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:10<00:00,  2.21s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:10<00:00,  2.56s/it]
-wandb: wandb version 0.17.8 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.17.5
-wandb: Run data is saved locally in /ceph/aasteine/fine-tuning-paper/src/experiments/wandb/run-20240831_013324-64nd8gnb
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Resuming run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar
-wandb: ⭐️ View project at https://wandb.ai/aaron98/First%20Paper
-wandb: 🚀 View run at https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: - 0.000 MB of 0.004 MB uploadedwandb: \ 0.000 MB of 0.004 MB uploadedwandb: | 0.015 MB of 0.015 MB uploadedwandb:                                                                                
-wandb: 
-wandb: Run history:
-wandb:     epoch ▁
-wandb:        f1 ▁
-wandb: precision ▁
-wandb:    recall ▁
-wandb: 
-wandb: Run summary:
-wandb:                    epoch 2
-wandb:                       f1 0.93364
-wandb:                precision 0.94673
-wandb:                   recall 0.92091
-wandb:               total_flos 1262515164807168000
-wandb:              train/epoch 9.98456
-wandb:        train/global_step 2910
-wandb:          train/grad_norm 0.34858
-wandb:      train/learning_rate 0.0
-wandb:               train/loss 0.36
-wandb:               train_loss 0.56449
-wandb:            train_runtime 28004.0865
-wandb: train_samples_per_second 4.163
-wandb:   train_steps_per_second 0.104
-wandb: 
-wandb: 🚀 View run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar at: https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: ⭐️ View project at: https://wandb.ai/aaron98/First%20Paper
-wandb: Synced 3 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20240831_013324-64nd8gnb/logs
-wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:08,  2.83s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:05<00:05,  2.99s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:08<00:02,  2.92s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.04s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.36s/it]
-wandb: wandb version 0.17.8 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.17.5
-wandb: Run data is saved locally in /ceph/aasteine/fine-tuning-paper/src/experiments/wandb/run-20240831_013742-64nd8gnb
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Resuming run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar
-wandb: ⭐️ View project at https://wandb.ai/aaron98/First%20Paper
-wandb: 🚀 View run at https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: - 0.000 MB of 0.003 MB uploadedwandb: \ 0.000 MB of 0.003 MB uploadedwandb: | 0.015 MB of 0.015 MB uploadedwandb:                                                                                
-wandb: 
-wandb: Run history:
-wandb:     epoch ▁
-wandb:        f1 ▁
-wandb: precision ▁
-wandb:    recall ▁
-wandb: 
-wandb: Run summary:
-wandb:                    epoch 3
-wandb:                       f1 0.91994
-wandb:                precision 0.92897
-wandb:                   recall 0.91109
-wandb:               total_flos 1262515164807168000
-wandb:              train/epoch 9.98456
-wandb:        train/global_step 2910
-wandb:          train/grad_norm 0.34858
-wandb:      train/learning_rate 0.0
-wandb:               train/loss 0.36
-wandb:               train_loss 0.56449
-wandb:            train_runtime 28004.0865
-wandb: train_samples_per_second 4.163
-wandb:   train_steps_per_second 0.104
-wandb: 
-wandb: 🚀 View run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar at: https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: ⭐️ View project at: https://wandb.ai/aaron98/First%20Paper
-wandb: Synced 3 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20240831_013742-64nd8gnb/logs
-wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:08,  2.81s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:05<00:05,  2.95s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:08<00:02,  2.88s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.01s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.34s/it]
-wandb: - Waiting for wandb.init()...wandb: \ Waiting for wandb.init()...wandb: | Waiting for wandb.init()...wandb: / Waiting for wandb.init()...wandb: wandb version 0.17.8 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.17.5
-wandb: Run data is saved locally in /ceph/aasteine/fine-tuning-paper/src/experiments/wandb/run-20240831_014201-64nd8gnb
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Resuming run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar
-wandb: ⭐️ View project at https://wandb.ai/aaron98/First%20Paper
-wandb: 🚀 View run at https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: - 0.000 MB of 0.015 MB uploadedwandb: \ 0.000 MB of 0.015 MB uploadedwandb: | 0.015 MB of 0.015 MB uploadedwandb:                                                                                
-wandb: 
-wandb: Run history:
-wandb:     epoch ▁
-wandb:        f1 ▁
-wandb: precision ▁
-wandb:    recall ▁
-wandb: 
-wandb: Run summary:
-wandb:                    epoch 4
-wandb:                       f1 0.86534
-wandb:                precision 0.78972
-wandb:                   recall 0.95696
-wandb:               total_flos 1262515164807168000
-wandb:              train/epoch 9.98456
-wandb:        train/global_step 2910
-wandb:          train/grad_norm 0.34858
-wandb:      train/learning_rate 0.0
-wandb:               train/loss 0.36
-wandb:               train_loss 0.56449
-wandb:            train_runtime 28004.0865
-wandb: train_samples_per_second 4.163
-wandb:   train_steps_per_second 0.104
-wandb: 
-wandb: 🚀 View run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar at: https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: ⭐️ View project at: https://wandb.ai/aaron98/First%20Paper
-wandb: Synced 3 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20240831_014201-64nd8gnb/logs
-wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:08,  2.80s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:05<00:05,  2.95s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:08<00:02,  2.87s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.01s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.33s/it]
-wandb: wandb version 0.17.8 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.17.5
-wandb: Run data is saved locally in /ceph/aasteine/fine-tuning-paper/src/experiments/wandb/run-20240831_014622-64nd8gnb
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Resuming run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar
-wandb: ⭐️ View project at https://wandb.ai/aaron98/First%20Paper
-wandb: 🚀 View run at https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: - 0.000 MB of 0.004 MB uploadedwandb: \ 0.000 MB of 0.004 MB uploadedwandb: | 0.015 MB of 0.015 MB uploadedwandb:                                                                                
-wandb: 
-wandb: Run history:
-wandb:     epoch ▁
-wandb:        f1 ▁
-wandb: precision ▁
-wandb:    recall ▁
-wandb: 
-wandb: Run summary:
-wandb:                    epoch 5
-wandb:                       f1 0.87159
-wandb:                precision 0.80561
-wandb:                   recall 0.94934
-wandb:               total_flos 1262515164807168000
-wandb:              train/epoch 9.98456
-wandb:        train/global_step 2910
-wandb:          train/grad_norm 0.34858
-wandb:      train/learning_rate 0.0
-wandb:               train/loss 0.36
-wandb:               train_loss 0.56449
-wandb:            train_runtime 28004.0865
-wandb: train_samples_per_second 4.163
-wandb:   train_steps_per_second 0.104
-wandb: 
-wandb: 🚀 View run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar at: https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: ⭐️ View project at: https://wandb.ai/aaron98/First%20Paper
-wandb: Synced 3 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20240831_014622-64nd8gnb/logs
-wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:08,  2.76s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:05<00:05,  2.95s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:08<00:02,  2.92s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.04s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.35s/it]
-wandb: wandb version 0.17.8 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.17.5
-wandb: Run data is saved locally in /ceph/aasteine/fine-tuning-paper/src/experiments/wandb/run-20240831_015041-64nd8gnb
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Resuming run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar
-wandb: ⭐️ View project at https://wandb.ai/aaron98/First%20Paper
-wandb: 🚀 View run at https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: - 0.000 MB of 0.004 MB uploadedwandb: \ 0.000 MB of 0.004 MB uploadedwandb: | 0.015 MB of 0.015 MB uploadedwandb:                                                                                
-wandb: 
-wandb: Run history:
-wandb:     epoch ▁
-wandb:        f1 ▁
-wandb: precision ▁
-wandb:    recall ▁
-wandb: 
-wandb: Run summary:
-wandb:                    epoch 6
-wandb:                       f1 0.92414
-wandb:                precision 0.93364
-wandb:                   recall 0.91484
-wandb:               total_flos 1262515164807168000
-wandb:              train/epoch 9.98456
-wandb:        train/global_step 2910
-wandb:          train/grad_norm 0.34858
-wandb:      train/learning_rate 0.0
-wandb:               train/loss 0.36
-wandb:               train_loss 0.56449
-wandb:            train_runtime 28004.0865
-wandb: train_samples_per_second 4.163
-wandb:   train_steps_per_second 0.104
-wandb: 
-wandb: 🚀 View run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar at: https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: ⭐️ View project at: https://wandb.ai/aaron98/First%20Paper
-wandb: Synced 3 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20240831_015041-64nd8gnb/logs
-wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:08,  2.77s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:05<00:05,  2.95s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:08<00:02,  2.94s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.06s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.37s/it]
-wandb: wandb version 0.17.8 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.17.5
-wandb: Run data is saved locally in /ceph/aasteine/fine-tuning-paper/src/experiments/wandb/run-20240831_015500-64nd8gnb
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Resuming run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar
-wandb: ⭐️ View project at https://wandb.ai/aaron98/First%20Paper
-wandb: 🚀 View run at https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: - 0.000 MB of 0.004 MB uploadedwandb: \ 0.015 MB of 0.015 MB uploadedwandb: | 0.015 MB of 0.015 MB uploadedwandb: / 0.015 MB of 0.015 MB uploadedwandb:                                                                                
-wandb: 
-wandb: Run history:
-wandb:     epoch ▁
-wandb:        f1 ▁
-wandb: precision ▁
-wandb:    recall ▁
-wandb: 
-wandb: Run summary:
-wandb:                    epoch 7
-wandb:                       f1 0.89965
-wandb:                precision 0.85047
-wandb:                   recall 0.95488
-wandb:               total_flos 1262515164807168000
-wandb:              train/epoch 9.98456
-wandb:        train/global_step 2910
-wandb:          train/grad_norm 0.34858
-wandb:      train/learning_rate 0.0
-wandb:               train/loss 0.36
-wandb:               train_loss 0.56449
-wandb:            train_runtime 28004.0865
-wandb: train_samples_per_second 4.163
-wandb:   train_steps_per_second 0.104
-wandb: 
-wandb: 🚀 View run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar at: https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: ⭐️ View project at: https://wandb.ai/aaron98/First%20Paper
-wandb: Synced 3 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20240831_015500-64nd8gnb/logs
-wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:08,  2.82s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:05<00:05,  2.96s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:08<00:02,  2.91s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.03s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.35s/it]
-wandb: wandb version 0.17.8 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.17.5
-wandb: Run data is saved locally in /ceph/aasteine/fine-tuning-paper/src/experiments/wandb/run-20240831_015920-64nd8gnb
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Resuming run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar
-wandb: ⭐️ View project at https://wandb.ai/aaron98/First%20Paper
-wandb: 🚀 View run at https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: - 0.000 MB of 0.015 MB uploadedwandb: \ 0.000 MB of 0.015 MB uploadedwandb: | 0.015 MB of 0.015 MB uploadedwandb:                                                                                
-wandb: 
-wandb: Run history:
-wandb:     epoch ▁
-wandb:        f1 ▁
-wandb: precision ▁
-wandb:    recall ▁
-wandb: 
-wandb: Run summary:
-wandb:                    epoch 8
-wandb:                       f1 0.92107
-wandb:                precision 0.88879
-wandb:                   recall 0.95578
-wandb:               total_flos 1262515164807168000
-wandb:              train/epoch 9.98456
-wandb:        train/global_step 2910
-wandb:          train/grad_norm 0.34858
-wandb:      train/learning_rate 0.0
-wandb:               train/loss 0.36
-wandb:               train_loss 0.56449
-wandb:            train_runtime 28004.0865
-wandb: train_samples_per_second 4.163
-wandb:   train_steps_per_second 0.104
-wandb: 
-wandb: 🚀 View run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar at: https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: ⭐️ View project at: https://wandb.ai/aaron98/First%20Paper
-wandb: Synced 3 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20240831_015920-64nd8gnb/logs
-wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:08,  2.80s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:05<00:05,  2.94s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:08<00:02,  2.94s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.05s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.36s/it]
-wandb: wandb version 0.17.8 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.17.5
-wandb: Run data is saved locally in /ceph/aasteine/fine-tuning-paper/src/experiments/wandb/run-20240831_020339-64nd8gnb
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Resuming run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar
-wandb: ⭐️ View project at https://wandb.ai/aaron98/First%20Paper
-wandb: 🚀 View run at https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: - 0.000 MB of 0.004 MB uploadedwandb: \ 0.000 MB of 0.004 MB uploadedwandb: | 0.015 MB of 0.015 MB uploadedwandb:                                                                                
-wandb: 
-wandb: Run history:
-wandb:     epoch ▁
-wandb:        f1 ▁
-wandb: precision ▁
-wandb:    recall ▁
-wandb: 
-wandb: Run summary:
-wandb:                    epoch 9
-wandb:                       f1 0.87418
-wandb:                precision 0.80841
-wandb:                   recall 0.9516
-wandb:               total_flos 1262515164807168000
-wandb:              train/epoch 9.98456
-wandb:        train/global_step 2910
-wandb:          train/grad_norm 0.34858
-wandb:      train/learning_rate 0.0
-wandb:               train/loss 0.36
-wandb:               train_loss 0.56449
-wandb:            train_runtime 28004.0865
-wandb: train_samples_per_second 4.163
-wandb:   train_steps_per_second 0.104
-wandb: 
-wandb: 🚀 View run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar at: https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: ⭐️ View project at: https://wandb.ai/aaron98/First%20Paper
-wandb: Synced 3 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20240831_020339-64nd8gnb/logs
-wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:08,  2.84s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:05<00:05,  2.98s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:08<00:02,  2.91s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.03s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.35s/it]
-wandb: wandb version 0.17.8 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.17.5
-wandb: Run data is saved locally in /ceph/aasteine/fine-tuning-paper/src/experiments/wandb/run-20240831_020758-64nd8gnb
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Resuming run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar
-wandb: ⭐️ View project at https://wandb.ai/aaron98/First%20Paper
-wandb: 🚀 View run at https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: - 0.000 MB of 0.004 MB uploadedwandb: \ 0.000 MB of 0.004 MB uploadedwandb: | 0.015 MB of 0.015 MB uploadedwandb:                                                                                
-wandb: 
-wandb: Run history:
-wandb:     epoch ▁
-wandb:        f1 ▁
-wandb: precision ▁
-wandb:    recall ▁
-wandb: 
-wandb: Run summary:
-wandb:                    epoch 10
-wandb:                       f1 0.88933
-wandb:                precision 0.82991
-wandb:                   recall 0.95793
-wandb:               total_flos 1262515164807168000
-wandb:              train/epoch 9.98456
-wandb:        train/global_step 2910
-wandb:          train/grad_norm 0.34858
-wandb:      train/learning_rate 0.0
-wandb:               train/loss 0.36
-wandb:               train_loss 0.56449
-wandb:            train_runtime 28004.0865
-wandb: train_samples_per_second 4.163
-wandb:   train_steps_per_second 0.104
-wandb: 
-wandb: 🚀 View run 2024-08-30-17-10-13_Meta-Llama-3.1-8B-Instruct_dblp-scholar at: https://wandb.ai/aaron98/First%20Paper/runs/64nd8gnb
-wandb: ⭐️ View project at: https://wandb.ai/aaron98/First%20Paper
-wandb: Synced 3 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20240831_020758-64nd8gnb/logs
-wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:03<00:09,  3.10s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:06<00:06,  3.07s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:09<00:02,  2.98s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.08s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.43s/it]
-You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset

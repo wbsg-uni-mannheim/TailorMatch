@@ -1,11 +1,11 @@
 ,Unnamed: 0.1,Unnamed: 0,checkpoint_path,checkpoint_number,epoch,f1,precision,recall
-0,0,0,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-56,56,1,0.7311178247734139,0.968,0.587378640776699
-1,1,1,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-113,113,2,0.8076923076923077,0.930379746835443,0.7135922330097088
-2,2,2,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-169,169,3,0.8557213930348259,0.8775510204081632,0.8349514563106796
-3,3,3,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-226,226,4,0.8512820512820513,0.9021739130434784,0.8058252427184466
-4,4,4,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-282,282,5,0.8275862068965517,0.84,0.8155339805825242
-5,5,5,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-339,339,6,0.8606965174129353,0.8826530612244898,0.8398058252427184
-6,6,6,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-395,395,7,0.8306010928961749,0.95,0.7378640776699029
-7,7,7,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-452,452,8,0.8461538461538461,0.8967391304347826,0.8009708737864077
-8,8,8,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-508,508,9,0.8429319371727748,0.9147727272727272,0.7815533980582524
-9,9,9,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-560,560,10,0.8385416666666666,0.904494382022472,0.7815533980582524
+0,0,0,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-56,56,1,0.7311178247734139,0.968,0.587378640776699
+1,1,1,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-113,113,2,0.8076923076923077,0.930379746835443,0.7135922330097088
+2,2,2,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-169,169,3,0.8557213930348259,0.8775510204081632,0.8349514563106796
+3,3,3,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-226,226,4,0.8512820512820513,0.9021739130434784,0.8058252427184466
+4,4,4,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-282,282,5,0.8275862068965517,0.84,0.8155339805825242
+5,5,5,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-339,339,6,0.8606965174129353,0.8826530612244898,0.8398058252427184
+6,6,6,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-395,395,7,0.8306010928961749,0.95,0.7378640776699029
+7,7,7,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-452,452,8,0.8461538461538461,0.8967391304347826,0.8009708737864077
+8,8,8,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-508,508,9,0.8429319371727748,0.9147727272727272,0.7815533980582524
+9,9,9,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/abt-buy/no_explanations/2024-08-14-15-50-23/checkpoint-560,560,10,0.8385416666666666,0.904494382022472,0.7815533980582524

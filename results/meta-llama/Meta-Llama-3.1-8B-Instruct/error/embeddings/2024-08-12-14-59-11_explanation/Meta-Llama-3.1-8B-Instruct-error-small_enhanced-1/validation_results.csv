@@ -1,6 +1,6 @@
 checkpoint_path,checkpoint_number,epoch,f1,precision,recall
-../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/error/embeddings/2024-08-12-14-59-11_explanation/Meta-Llama-3.1-8B-Instruct-error-small_enhanced-1/checkpoint-178,178,4,0.7517482517482518,0.6677018633540373,0.86
-../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/error/embeddings/2024-08-12-14-59-11_explanation/Meta-Llama-3.1-8B-Instruct-error-small_enhanced-1/checkpoint-220,220,5,0.7411255411255411,0.6534351145038167,0.856
-../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/error/embeddings/2024-08-12-14-59-11_explanation/Meta-Llama-3.1-8B-Instruct-error-small_enhanced-1/checkpoint-133,133,3,0.74,0.6342857142857142,0.888
-../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/error/embeddings/2024-08-12-14-59-11_explanation/Meta-Llama-3.1-8B-Instruct-error-small_enhanced-1/checkpoint-89,89,2,0.6865889212827988,0.5401376146788991,0.942
-../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/error/embeddings/2024-08-12-14-59-11_explanation/Meta-Llama-3.1-8B-Instruct-error-small_enhanced-1/checkpoint-44,44,1,0.0,0.0,0.0
+../results/meta-llama/Meta-Llama-3.1-8B-Instruct/error/embeddings/2024-08-12-14-59-11_explanation/Meta-Llama-3.1-8B-Instruct-error-small_enhanced-1/checkpoint-178,178,4,0.7517482517482518,0.6677018633540373,0.86
+../results/meta-llama/Meta-Llama-3.1-8B-Instruct/error/embeddings/2024-08-12-14-59-11_explanation/Meta-Llama-3.1-8B-Instruct-error-small_enhanced-1/checkpoint-220,220,5,0.7411255411255411,0.6534351145038167,0.856
+../results/meta-llama/Meta-Llama-3.1-8B-Instruct/error/embeddings/2024-08-12-14-59-11_explanation/Meta-Llama-3.1-8B-Instruct-error-small_enhanced-1/checkpoint-133,133,3,0.74,0.6342857142857142,0.888
+../results/meta-llama/Meta-Llama-3.1-8B-Instruct/error/embeddings/2024-08-12-14-59-11_explanation/Meta-Llama-3.1-8B-Instruct-error-small_enhanced-1/checkpoint-89,89,2,0.6865889212827988,0.5401376146788991,0.942
+../results/meta-llama/Meta-Llama-3.1-8B-Instruct/error/embeddings/2024-08-12-14-59-11_explanation/Meta-Llama-3.1-8B-Instruct-error-small_enhanced-1/checkpoint-44,44,1,0.0,0.0,0.0

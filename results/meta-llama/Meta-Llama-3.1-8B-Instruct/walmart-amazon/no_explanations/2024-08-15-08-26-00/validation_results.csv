@@ -1,11 +1,11 @@
 ,Unnamed: 0,checkpoint_path,checkpoint_number,epoch,f1,precision,recall
-0,0,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-83,83,1,0.4509090909090909,0.7560975609756098,0.3212435233160621
-1,1,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-167,167,2,0.6683673469387755,0.6582914572864321,0.6787564766839378
-2,2,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-250,250,3,0.66875,0.84251968503937,0.5544041450777202
-3,3,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-334,334,4,0.6793650793650794,0.8770491803278688,0.5544041450777202
-4,4,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-417,417,5,0.6511627906976745,0.9074074074074074,0.5077720207253886
-5,5,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-501,501,6,0.636986301369863,0.9393939393939394,0.4818652849740932
-6,6,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-584,584,7,0.6086956521739131,0.8584905660377359,0.4715025906735751
-7,7,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-668,668,8,0.5918367346938775,0.8613861386138614,0.4507772020725388
-8,8,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-751,751,9,0.6274509803921569,0.8495575221238938,0.4974093264248704
-9,9,../../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-830,830,10,0.627831715210356,0.8362068965517241,0.5025906735751295
+0,0,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-83,83,1,0.4509090909090909,0.7560975609756098,0.3212435233160621
+1,1,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-167,167,2,0.6683673469387755,0.6582914572864321,0.6787564766839378
+2,2,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-250,250,3,0.66875,0.84251968503937,0.5544041450777202
+3,3,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-334,334,4,0.6793650793650794,0.8770491803278688,0.5544041450777202
+4,4,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-417,417,5,0.6511627906976745,0.9074074074074074,0.5077720207253886
+5,5,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-501,501,6,0.636986301369863,0.9393939393939394,0.4818652849740932
+6,6,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-584,584,7,0.6086956521739131,0.8584905660377359,0.4715025906735751
+7,7,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-668,668,8,0.5918367346938775,0.8613861386138614,0.4507772020725388
+8,8,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-751,751,9,0.6274509803921569,0.8495575221238938,0.4974093264248704
+9,9,../results/meta-llama/Meta-Llama-3.1-8B-Instruct/walmart-amazon/no_explanations/2024-08-15-08-26-00/checkpoint-830,830,10,0.627831715210356,0.8362068965517241,0.5025906735751295
