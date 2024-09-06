@@ -74,7 +74,10 @@ When working with open-source models, the datasets are provided in CSV format. F
 
 ## Results
 
-You can refer to `Fine-tuning-results.xlsx` for a comprehensive overview of the model's performance.
+You can refer to `Fine-tuning-results.xlsx` for a comprehensive overview. The file consolidates and aggregates the results from various scenarios, providing a complete analysis.
+
+Each run produces a results.csv or stats.csv file containing the metrics specific to that particular scenario. Additionally, the results folder for each scenario includes the model’s raw outputs.
+
 
 ## Prompts
 
