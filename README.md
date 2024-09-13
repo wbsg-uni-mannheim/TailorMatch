@@ -1,6 +1,6 @@
 # TailorMatch: Fine-Tuning Large Language Models for Enhanced Entity Matching
 
-This repository contains the code and examples to reproduce and extend the experiments from our paper **"Fine-tuning Large Language Models for Entity Matching"**. The preprint is available on [arxiv](####).
+This repository contains the code and examples to reproduce and extend the experiments from our paper **"Fine-tuning Large Language Models for Entity Matching"**. The preprint is available on [arxiv](https://arxiv.org/abs/2409.08185).
 
 ## Requirements
 
