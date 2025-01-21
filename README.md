@@ -7,7 +7,7 @@ This repository contains the code and examples to reproduce and extend the exper
 
 ## Requirements
 
-- Python 3.9
+- Python 3.11+
 - [venv](https://docs.python.org/3/library/venv.html)
 
 ## Setup
