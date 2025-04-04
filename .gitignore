@@ -187,3 +187,7 @@ training_args.bin
 results/meta-llama/**/README.md
 
 results/meta-llama/**/*.json
+
+src/wandb/
+src/logs/
+logs/
