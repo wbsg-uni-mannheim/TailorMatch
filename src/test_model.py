@@ -92,24 +92,24 @@ def process_datasets(datasets, hf_pipeline, test_prompts_path, checkpoint_folder
 
 if __name__ == "__main__":
     # Set CUDA_VISIBLE_DEVICES to limit GPUs
-    os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,6,7"
+    #os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,6,7"
 
     CHECKPOINT_FOLDERS = [
-        "../results/meta-llama/Meta-Llama-3.1-70B-Instruct/small/explanation/2024-08-10-13-50-12_explanation"
+        "/ceph/aasteine/example_representation/results/meta-llama/Llama-3.1-8B-Instruct/hyperparameter_search_sanity/lr_0.0002_lorar_64_lora_dropout_0.1/2025-02-04-14-40-21"
     ]
 
-    TEST_PROMPTS = "../prompts/domain_promts.json"
+    TEST_PROMPTS = "/ceph/aasteine/fine-tuning-paper/prompts/test_prompt.json"
 
     BATCH_SIZE = 32
 
     datasets = [
-        # {"dataset_name": "wdc-fullsize",
-        #    "dataset_path": "../data/wdc/wdcproducts80cc20rnd050un_test_gs.pkl"},
+        {"dataset_name": "wdc-fullsize",
+           "dataset_path": "./data/wdc/wdcproducts80cc20rnd050un_test_gs.pkl"},
         # {"dataset_name": "abt-buy-full", "dataset_path": "../data/abt-buy/abt-buy-gs.pkl"}, {
         #    "dataset_name": "amazon-google-full", "dataset_path": "../data/amazon-google/amazon-google-gs.pkl"},
-        {"dataset_name": "dblp-acm", "dataset_path": "../data/dblp-acm/dblp-acm-gs.pkl"},
-        {"dataset_name": "dblp-scholar",
-            "dataset_path": "../data/dblp-scholar/dblp-scholar-gs.pkl"},
+        #{"dataset_name": "dblp-acm", "dataset_path": "../data/dblp-acm/dblp-acm-gs.pkl"},
+        #{"dataset_name": "dblp-scholar",
+        #    "dataset_path": "../data/dblp-scholar/dblp-scholar-gs.pkl"},
         # {"dataset_name": "walmart-amazon",
         #    "dataset_path": "../data/walmart-amazon/walmart-amazon-gs.pkl"}
     ]

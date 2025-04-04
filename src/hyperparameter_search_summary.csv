@@ -1,0 +1,37 @@
+Run ID,Learning Rate,Batch Size,Epochs,Grad Accumulation Steps,Status,Best F1 Score
+lr0.0002_bs8_gs16,0.0002,8,10,16,Failed/Not Run,N/A
+lr0.0002_bs8_gs20,0.0002,8,10,20,Completed,N/A
+lr0.0002_bs8_gs24,0.0002,8,10,24,Completed,N/A
+lr0.0002_bs16_gs16,0.0002,16,10,16,Completed,N/A
+lr0.0002_bs16_gs20,0.0002,16,10,20,Completed,N/A
+lr0.0002_bs16_gs24,0.0002,16,10,24,Completed,N/A
+lr0.0002_bs32_gs16,0.0002,32,10,16,Completed,N/A
+lr0.0002_bs32_gs20,0.0002,32,10,20,Completed,N/A
+lr0.0002_bs32_gs24,0.0002,32,10,24,Completed,N/A
+lr0.000001_bs8_gs16,0.000001,8,10,16,Completed,N/A
+lr0.000001_bs8_gs20,0.000001,8,10,20,Completed,N/A
+lr0.000001_bs8_gs24,0.000001,8,10,24,Completed,N/A
+lr0.000001_bs16_gs16,0.000001,16,10,16,Completed,N/A
+lr0.000001_bs16_gs20,0.000001,16,10,20,Completed,N/A
+lr0.000001_bs16_gs24,0.000001,16,10,24,Completed,N/A
+lr0.000001_bs32_gs16,0.000001,32,10,16,Completed,N/A
+lr0.000001_bs32_gs20,0.000001,32,10,20,Completed,N/A
+lr0.000001_bs32_gs24,0.000001,32,10,24,Completed,N/A
+lr0.00001_bs8_gs16,0.00001,8,10,16,Completed,N/A
+lr0.00001_bs8_gs20,0.00001,8,10,20,Completed,N/A
+lr0.00001_bs8_gs24,0.00001,8,10,24,Completed,N/A
+lr0.00001_bs16_gs16,0.00001,16,10,16,Completed,N/A
+lr0.00001_bs16_gs20,0.00001,16,10,20,Completed,N/A
+lr0.00001_bs16_gs24,0.00001,16,10,24,Completed,N/A
+lr0.00001_bs32_gs16,0.00001,32,10,16,Completed,N/A
+lr0.00001_bs32_gs20,0.00001,32,10,20,Completed,N/A
+lr0.00001_bs32_gs24,0.00001,32,10,24,Completed,N/A
+lr0.001_bs8_gs16,0.001,8,10,16,Completed,N/A
+lr0.001_bs8_gs20,0.001,8,10,20,Completed,N/A
+lr0.001_bs8_gs24,0.001,8,10,24,Completed,N/A
+lr0.001_bs16_gs16,0.001,16,10,16,Completed,N/A
+lr0.001_bs16_gs20,0.001,16,10,20,Completed,N/A
+lr0.001_bs16_gs24,0.001,16,10,24,Completed,N/A
+lr0.001_bs32_gs16,0.001,32,10,16,Completed,N/A
+lr0.001_bs32_gs20,0.001,32,10,20,Completed,N/A
+lr0.001_bs32_gs24,0.001,32,10,24,Completed,N/A
