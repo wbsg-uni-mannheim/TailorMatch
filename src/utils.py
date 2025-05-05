@@ -124,6 +124,9 @@ def calculate_results(result_dir):
 
     # Save the combined results to a CSV file
     result_df.to_csv(os.path.join(result_dir, "results.csv"), index=False)
+    
+    # Print the highest f1 score
+    print(f"Highest F1 Score: {result_df['F1 Score'].max()}")
 
     return result_df
 

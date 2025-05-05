@@ -5,6 +5,7 @@ import torch
 import os
 from dotenv import load_dotenv
 from datetime import datetime
+from tqdm import tqdm
 
 # Load environment variables from a .env file
 load_dotenv()
@@ -26,7 +27,9 @@ def generate_answers(messages, hf_pipeline):
     results = []
 
     # Iterate through the dataset using the pipeline and generate text completions
-    for out in hf_pipeline(KeyDataset(dataset, "text"), max_new_tokens=5):
+    for out in tqdm(hf_pipeline(KeyDataset(dataset, "text"), max_new_tokens=5), 
+                   total=len(messages),
+                   desc="Generating responses"):
         # Append the generated text to the results list
         results.append(out[0]['generated_text'])
 
@@ -69,9 +72,10 @@ def load_pipeline(model_path, batch_size):
     model = AutoModelForCausalLM.from_pretrained(
         model_path,
         device_map="auto",
-        #quantization_config=quant_config,
+        quantization_config=quant_config,
         token=os.getenv("HUGGINGFACE_TOKEN"),
-        cache_dir="/ceph/aasteine/fine-tuning-paper/.cache",
+        cache_dir=os.getenv("CACHE_DIR"),
+        torch_dtype=compute_dtype,
     )
 
     # Initialize the text generation pipeline with the model, tokenizer, and specified batch size

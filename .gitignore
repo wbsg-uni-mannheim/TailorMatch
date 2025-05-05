@@ -186,8 +186,16 @@ training_args.bin
 # Ignore README.md files only in the llama directory and its subdirectories
 results/meta-llama/**/README.md
 
-results/meta-llama/**/*.json
 
 src/wandb/
 src/logs/
 logs/
+
+results/**/*.pt 
+results/**/*.safetensors
+results/**/*.json
+results/**/*.jsonl
+results/**/*.jsonl.gz
+results/**/*.jsonl.gz.part
+
+wandb/

@@ -1,0 +1,10 @@
+,checkpoint_path,checkpoint_number,epoch,f1,precision,recall
+0,results/meta-llama/Meta-Llama-3.1-8B-Instruct/swapped_matching_examples/lr_0.0002/2025-04-30-17-40-51/checkpoint-6,6,1,0.4781420765027322,0.7543103448275862,0.35
+1,results/meta-llama/Meta-Llama-3.1-8B-Instruct/swapped_matching_examples/lr_0.0002/2025-04-30-17-40-51/checkpoint-12,12,2,0.5772151898734177,0.7862068965517242,0.456
+2,results/meta-llama/Meta-Llama-3.1-8B-Instruct/swapped_matching_examples/lr_0.0002/2025-04-30-17-40-51/checkpoint-18,18,3,0.628175519630485,0.7431693989071039,0.544
+3,results/meta-llama/Meta-Llama-3.1-8B-Instruct/swapped_matching_examples/lr_0.0002/2025-04-30-17-40-51/checkpoint-24,24,4,0.6803921568627451,0.6673076923076923,0.694
+4,results/meta-llama/Meta-Llama-3.1-8B-Instruct/swapped_matching_examples/lr_0.0002/2025-04-30-17-40-51/checkpoint-30,30,5,0.693631669535284,0.6087613293051359,0.806
+5,results/meta-llama/Meta-Llama-3.1-8B-Instruct/swapped_matching_examples/lr_0.0002/2025-04-30-17-40-51/checkpoint-36,36,6,0.70859167404783,0.6359300476947536,0.8
+6,results/meta-llama/Meta-Llama-3.1-8B-Instruct/swapped_matching_examples/lr_0.0002/2025-04-30-17-40-51/checkpoint-42,42,7,0.7190226876090751,0.6377708978328174,0.824
+7,results/meta-llama/Meta-Llama-3.1-8B-Instruct/swapped_matching_examples/lr_0.0002/2025-04-30-17-40-51/checkpoint-48,48,8,0.7187237615449202,0.6193921852387844,0.856
+8,results/meta-llama/Meta-Llama-3.1-8B-Instruct/swapped_matching_examples/lr_0.0002/2025-04-30-17-40-51/checkpoint-50,50,9,0.7123745819397993,0.6120689655172413,0.852

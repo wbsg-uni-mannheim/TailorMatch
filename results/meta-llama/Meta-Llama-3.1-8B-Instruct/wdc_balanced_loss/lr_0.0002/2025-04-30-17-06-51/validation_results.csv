@@ -1,0 +1,11 @@
+,checkpoint_path,checkpoint_number,epoch,f1,precision,recall
+0,results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc_balanced_loss/lr_0.0002/2025-04-30-17-06-51/checkpoint-3,3,1,0.45803698435277385,0.7931034482758621,0.322
+1,results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc_balanced_loss/lr_0.0002/2025-04-30-17-06-51/checkpoint-6,6,2,0.44170096021947874,0.7030567685589519,0.322
+2,results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc_balanced_loss/lr_0.0002/2025-04-30-17-06-51/checkpoint-9,9,3,0.5245033112582781,0.7764705882352941,0.396
+3,results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc_balanced_loss/lr_0.0002/2025-04-30-17-06-51/checkpoint-12,12,4,0.5040431266846361,0.7727272727272727,0.374
+4,results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc_balanced_loss/lr_0.0002/2025-04-30-17-06-51/checkpoint-15,15,5,0.5211640211640212,0.76953125,0.394
+5,results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc_balanced_loss/lr_0.0002/2025-04-30-17-06-51/checkpoint-18,18,6,0.5617685305591678,0.8029739776951673,0.432
+6,results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc_balanced_loss/lr_0.0002/2025-04-30-17-06-51/checkpoint-21,21,7,0.5565669700910273,0.7955390334572491,0.428
+7,results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc_balanced_loss/lr_0.0002/2025-04-30-17-06-51/checkpoint-24,24,8,0.5951468710089399,0.823321554770318,0.466
+8,results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc_balanced_loss/lr_0.0002/2025-04-30-17-06-51/checkpoint-27,27,9,0.5914786967418546,0.7919463087248322,0.472
+9,results/meta-llama/Meta-Llama-3.1-8B-Instruct/wdc_balanced_loss/lr_0.0002/2025-04-30-17-06-51/checkpoint-30,30,10,0.5974683544303797,0.8137931034482758,0.472

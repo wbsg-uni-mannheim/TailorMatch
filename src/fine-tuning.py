@@ -1,6 +1,7 @@
 import wandb
 from dotenv import load_dotenv
-import pandas as pd
+import json
+
 import random
 import numpy as np
 from datetime import datetime
@@ -15,25 +16,29 @@ from datasets import load_dataset
 import torch
 import os
 from pathlib import Path
+import huggingface_hub
+
+# Enable better CUDA error reporting
+os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
+
+# Load environment variables
+load_dotenv()
+
+huggingface_hub.login(token=os.getenv("HUGGINGFACE_TOKEN"))
 
 # Configuration
 class TrainingConfig:
     def __init__(self):
-        self.BASE_PATH = "../results"
+        self.BASE_PATH = "results"
         self.MODEL_ID = "meta-llama/Meta-Llama-3.1-8B-Instruct"
-        self.TRAINING_FILE_PATH = "../data/wdc/train_small/train_small_simple.csv"
-        self.DATASET_NAME = "wdc_no_quantization"
+        self.TRAINING_FILE_PATH = "data/wdc/train_small/augmentation/preprocessed_wdcproducts80cc20rnd000un_train_small_upsampled.csv"
+        self.DATASET_NAME = "upsampled"
         self.LEARNING_RATES = 2.00E-04
         self.SEED = 42
-        self.MAX_EPOCHS = 10
-        self.BATCH_SIZE = 10
+        self.MAX_EPOCHS = 30
+        self.BATCH_SIZE = 4
         self.GRAD_ACCUMULATION_STEPS = 20
         
-        # Set CUDA devices
-        os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2"
-        
-        # Load environment variables
-        load_dotenv()
 
 def set_seeds(seed_value):
     """Set all seeds for reproducibility"""
@@ -49,31 +54,38 @@ def setup_model_and_tokenizer(config):
     """Initialize model and tokenizer"""
     compute_dtype = getattr(torch, "float16")
     
-    quant_config = BitsAndBytesConfig(
-        load_in_4bit=True,
-        bnb_4bit_quant_type="nf4",
-        bnb_4bit_compute_dtype=compute_dtype,
-        bnb_4bit_use_double_quant=False,
-    )
-    
+    # Remove quantization config
     model = AutoModelForCausalLM.from_pretrained(
         config.MODEL_ID,
         device_map="auto",
         token=os.getenv("HUGGINGFACE_TOKEN"),
         cache_dir=os.getenv("CACHE_DIR"),
-        quantization_config=quant_config,
+        torch_dtype=compute_dtype,  # Use float16 instead of quantization
     )
     
-    model.config.use_cache = False
+    model.config.use_cache = True
     model.config.pretraining_tp = 1
     
     tokenizer = AutoTokenizer.from_pretrained(
         config.MODEL_ID,
         trust_remote_code=True,
-        token=os.getenv("HUGGINGFACE_TOKEN")
+        token=os.getenv("HUGGINGFACE_TOKEN"),
+        cache_dir=os.getenv("CACHE_DIR")
     )
     tokenizer.pad_token = tokenizer.eos_token
     tokenizer.padding_side = "right"
+    
+    print("--- Verification ---")
+    print(f"Model Vocab Size (config): {model.config.vocab_size}")
+    print(f"Model Embedding Size: {model.get_input_embeddings().weight.shape[0]}")
+    print(f"Tokenizer Vocab Size (len): {len(tokenizer)}")
+    print(f"Tokenizer Vocab Size (attr): {tokenizer.vocab_size}") # Base vocab without added tokens
+    # Check if special tokens were added automatically
+    print(f"Tokenizer Added Tokens: {len(tokenizer.added_tokens_decoder)}")
+    # Ensure pad token ID is valid if used
+    if tokenizer.pad_token_id is not None:
+         print(f"Pad token ID: {tokenizer.pad_token_id} (Valid range: 0 to {len(tokenizer)-1})")
+    print("--------------------")
     
     return model, tokenizer
 
@@ -87,10 +99,10 @@ def get_lora_config():
         task_type="CAUSAL_LM",
     )
 
-def get_sft_config(output_dir, learning_rate, run_name, config):
+def get_sft_config(output_dir, learning_rate, run_name, config, tokenizer):
     """Get SFT configuration"""
     return SFTConfig(
-        max_seq_length=240,
+        max_seq_length=512,
         packing=True,
         output_dir=output_dir,
         num_train_epochs=config.MAX_EPOCHS,
@@ -151,10 +163,48 @@ def main():
         reinit=True
     )
     
+    # Save run configuration to JSON
+    run_config = {
+        "run_name": run_name,
+        "wandb_run_id": wandb.run.id,
+        "timestamp": timestamp,
+        "model": config.MODEL_ID,
+        "training_file": config.TRAINING_FILE_PATH,
+        "dataset_name": config.DATASET_NAME,
+        "learning_rate": lr,
+        "max_epochs": config.MAX_EPOCHS,
+        "batch_size": config.BATCH_SIZE,
+        "gradient_accumulation_steps": config.GRAD_ACCUMULATION_STEPS,
+        "output_dir": str(output_dir),
+        "training_params": {
+            "max_seq_length": 240,
+            "packing": True,
+            "optim": "paged_adamw_32bit",
+            "fp16": True,
+            "bf16": False,
+            "max_grad_norm": 1,
+            "warmup_ratio": 0.03,
+            "lr_scheduler_type": "polynomial"
+        },
+        "lora_config": {
+            "lora_alpha": 16,
+            "lora_dropout": 0.1,
+            "r": 64,
+            "bias": "none",
+            "task_type": "CAUSAL_LM"
+        }
+    }
+    
+    # Save the configuration to a JSON file
+    config_file = output_dir / "runconfig.json"
+    with open(config_file, 'w') as f:
+        json.dump(run_config, f, indent=4)
+    
     # Log training parameters
     print(f"Starting training with learning rate: {lr}")
     print(f"Training Data Path: {config.TRAINING_FILE_PATH}")
     print(f"Output Directory: {output_dir}")
+    print(f"Run configuration saved to: {config_file}")
     
     # Setup model and tokenizer
     model, tokenizer = setup_model_and_tokenizer(config)
@@ -163,9 +213,9 @@ def main():
     trainer = SFTTrainer(
         model=model,
         train_dataset=dataset,
-        args=get_sft_config(str(output_dir), lr, run_name, config),
+        args=get_sft_config(str(output_dir), lr, run_name, config, tokenizer),
         peft_config=get_lora_config(),
-        tokenizer=tokenizer,
+        processing_class=tokenizer,
     )
     
     # Train model

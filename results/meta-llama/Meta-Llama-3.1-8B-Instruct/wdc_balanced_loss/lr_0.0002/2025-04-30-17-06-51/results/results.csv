@@ -1,0 +1,5 @@
+Task,Accuracy,F1 Score,Precision,Recall,Num -1 Responses,Dataset
+domain-complex-free (Product),0.8531111111111112,0.5461441213653603,0.7422680412371134,0.432,503,wdc-fullsize
+domain-simple-free (Product),0.8028888888888889,0.14678899082568808,0.8888888888888888,0.08,775,wdc-fullsize
+domain-complex-force (Product),0.8968888888888888,0.6441717791411042,0.5223880597014925,0.84,0,wdc-fullsize
+domain-simple-force (Product),0.9153333333333333,0.44702467343976776,0.8148148148148148,0.308,0,wdc-fullsize
