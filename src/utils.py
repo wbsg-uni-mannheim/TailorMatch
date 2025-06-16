@@ -18,6 +18,21 @@ def clean_response(response):
         return 0
     else:
         return -1
+    
+def clean_response_bool(response):
+    """
+    Cleans the chatbot response by converting it to a binary value.
+
+    Args:
+        response (str): The raw response from the chatbot.
+
+    Returns:
+        int: 1 if the response contains "yes", 0 if it contains "no", and -1 otherwise.
+    """
+    if "yes" in response.lower():
+        return 1
+    else:
+        return 0
 
 # Function to insert product descriptions into the prompt
 def insert_product_descriptions(prompt_template: str, product1: str, product2: str):
@@ -171,3 +186,49 @@ def parse_response(response):
         "completion_tokens": usage.get("completion_tokens"),
         "total_tokens": usage.get("total_tokens"),
     })
+    
+    
+def serialize_product(row, side='left'):
+    """Serialize product attributes from a row, only including
+       non-NaN, non-empty, non-whitespace-only values.
+    """
+    attributes = []
+    
+    def add_attr(tag, value):
+        # 1) Exclude NaN
+        if pd.isna(value):
+            return
+        # 2) Normalize to str and strip
+        text = str(value).strip()
+        # 3) Exclude empty or all-spaces
+        if not text:
+            return
+        # 4) Append with tags
+        attributes.append(f"[{tag}] {text} [/{tag}]")
+    
+    # TITLE is required, but we still run it through our helper
+    add_attr("TITLE", row.get(f"title_{side}", None))
+    
+    # BRAND (from brand_ or manufacturer_)
+    if f"brand_{side}" in row.index:
+        add_attr("BRAND", row[f"brand_{side}"])
+    if f"manufacturer_{side}" in row.index:
+        add_attr("BRAND", row[f"manufacturer_{side}"])
+    
+    # DESCRIPTION
+    if f"description_{side}" in row.index:
+        add_attr("DESCRIPTION", row[f"description_{side}"])
+    
+    # CATEGORY (note the underscore)
+    if f"category_{side}" in row.index:
+        add_attr("CATEGORY", row[f"category_{side}"])
+    
+    # PRICE
+    if f"price_{side}" in row.index:
+        add_attr("PRICE", row[f"price_{side}"])
+    
+    # CURRENCY
+    if f"priceCurrency_{side}" in row.index:
+        add_attr("CURRENCY", row[f"priceCurrency_{side}"])
+    
+    return " ".join(attributes)

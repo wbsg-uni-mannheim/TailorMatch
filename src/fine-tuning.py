@@ -12,27 +12,59 @@ from transformers import (
     AutoTokenizer,
     BitsAndBytesConfig,
 )
-from datasets import load_dataset
+import pandas as pd
+from datasets import load_dataset, Dataset
 import torch
 import os
 from pathlib import Path
 import huggingface_hub
+from utils import serialize_product
 
 # Enable better CUDA error reporting
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
+USE_ALL_FIELDS = True
+MAX_SEQ_LENGTH = 1024
 
 # Load environment variables
 load_dotenv()
 
 huggingface_hub.login(token=os.getenv("HUGGINGFACE_TOKEN"))
 
+PROMPT_TEMPLATE = "Do the two product descriptions refer to the same real-world product? Entity 1: 'Entity 1'. Entity 2: 'Entity 2'."
+
+def insert_product_descriptions(prompt_template: str, product1: str, product2: str):
+    # Replace placeholder texts with actual product descriptions
+    prompt = prompt_template.replace("'Entity 1'", product1).replace("'Entity 2'", product2)
+    return prompt
+
+def transform_label(label: int):
+    if label == 1 or label == "1":
+        return "Yes"
+    elif label == 0 or label == "0":
+        return "No"
+    else:
+        raise ValueError("Label must be 0 or 1")
+
+def create_training_example(prompt_template: str, product1: str, product2: str, label: int):
+    # Create the prompt with product descriptions
+    prompt = insert_product_descriptions(prompt_template, product1, product2)
+    if label == 1 or label == "1":
+        response = "Yes"
+    elif label == 0 or label == "0":
+        response = "No"
+    else:
+        raise ValueError("Label must be 0 or 1")
+    
+    # Create the training example in the format required for fine-tuning
+    return prompt, response
+
 # Configuration
 class TrainingConfig:
     def __init__(self):
         self.BASE_PATH = "results"
         self.MODEL_ID = "meta-llama/Meta-Llama-3.1-8B-Instruct"
-        self.TRAINING_FILE_PATH = "data/wdc/train_small/augmentation/preprocessed_wdcproducts80cc20rnd000un_train_small_upsampled.csv"
-        self.DATASET_NAME = "upsampled"
+        self.TRAINING_FILE_PATH = "temp.csv"
+        self.DATASET_NAME = "Walmart-Amazon with explanations"
         self.LEARNING_RATES = 2.00E-04
         self.SEED = 42
         self.MAX_EPOCHS = 30
@@ -68,12 +100,18 @@ def setup_model_and_tokenizer(config):
     
     tokenizer = AutoTokenizer.from_pretrained(
         config.MODEL_ID,
-        trust_remote_code=True,
         token=os.getenv("HUGGINGFACE_TOKEN"),
-        cache_dir=os.getenv("CACHE_DIR")
+        cache_dir=os.getenv("CACHE_DIR"),
+        trust_remote_code=True,
     )
     tokenizer.pad_token = tokenizer.eos_token
     tokenizer.padding_side = "right"
+    
+    if len(tokenizer) != model.config.vocab_size:
+        model.resize_token_embeddings(len(tokenizer))  # grow embedding matrix
+
+    # The loss kernel uses model.config.vocab_size – keep it in sync!
+    model.config.vocab_size = len(tokenizer)
     
     print("--- Verification ---")
     print(f"Model Vocab Size (config): {model.config.vocab_size}")
@@ -87,6 +125,11 @@ def setup_model_and_tokenizer(config):
          print(f"Pad token ID: {tokenizer.pad_token_id} (Valid range: 0 to {len(tokenizer)-1})")
     print("--------------------")
     
+    # Ensure model and tokenizer vocab sizes match – otherwise CrossEntropy will crash with CUDA device-side assert
+    if len(tokenizer) != model.get_input_embeddings().weight.shape[0]:
+        print(f"[INFO] Resizing token embeddings from {model.get_input_embeddings().weight.shape[0]} to {len(tokenizer)} to accommodate added special tokens")
+        model.resize_token_embeddings(len(tokenizer))
+    
     return model, tokenizer
 
 def get_lora_config():
@@ -94,7 +137,7 @@ def get_lora_config():
     return LoraConfig(
         lora_alpha=16,
         lora_dropout=0.1,
-        r=64,
+        r=64,   
         bias="none",
         task_type="CAUSAL_LM",
     )
@@ -102,9 +145,9 @@ def get_lora_config():
 def get_sft_config(output_dir, learning_rate, run_name, config, tokenizer):
     """Get SFT configuration"""
     return SFTConfig(
-        max_seq_length=512,
-        packing=True,
+        max_seq_length=MAX_SEQ_LENGTH,
         output_dir=output_dir,
+        packing=True,
         num_train_epochs=config.MAX_EPOCHS,
         per_device_train_batch_size=config.BATCH_SIZE,
         gradient_accumulation_steps=config.GRAD_ACCUMULATION_STEPS,
@@ -126,26 +169,81 @@ def get_sft_config(output_dir, learning_rate, run_name, config, tokenizer):
 
 def save_artifacts(trainer, output_dir, run_name):
     """Save model artifacts and log to wandb"""
+    # Convert output_dir to Path if it's not already
+    output_path = Path(output_dir)
+    
     # Save model and tokenizer locally
-    trainer.model.save_pretrained(f"{output_dir}/{run_name}")
-    trainer.tokenizer.save_pretrained(f"{output_dir}/{run_name}_tokenizer")
+    trainer.model.save_pretrained(output_path / run_name)
+    trainer.tokenizer.save_pretrained(output_path / f"{run_name}_tokenizer")
     
     # Create and log wandb artifacts
     model_artifact = wandb.Artifact(run_name, type='model')
-    model_artifact.add_dir(run_name)
+    model_artifact.add_dir(str(output_path / run_name))
     wandb.log_artifact(model_artifact)
     
     tokenizer_artifact = wandb.Artifact(f"{run_name}_tokenizer", type='tokenizer')
-    tokenizer_artifact.add_dir(f"{run_name}_tokenizer")
+    tokenizer_artifact.add_dir(str(output_path / f"{run_name}_tokenizer"))
     wandb.log_artifact(tokenizer_artifact)
+
+def assert_ids_ok(data, tok, max_id):
+    for ex in data.select(range(50)):          # first 50 samples are enough
+        if max(tok(ex["prompt"]+ex["completion"])["input_ids"]) >= max_id:
+            raise ValueError("Found token id ≥ vocab_size")
 
 def main():
     # Initialize configuration
     config = TrainingConfig()
     set_seeds(config.SEED)
     
-    # Load dataset
-    dataset = load_dataset('csv', data_files=config.TRAINING_FILE_PATH, split="train")
+    if ".csv" in config.TRAINING_FILE_PATH:
+        # Load dataset
+        dataset = load_dataset('csv', data_files=config.TRAINING_FILE_PATH, split="train")
+    elif USE_ALL_FIELDS:
+        if ".pkl" in config.TRAINING_FILE_PATH:
+            train_set = pd.read_pickle(config.TRAINING_FILE_PATH, compression="gzip")
+        elif ".json" in config.TRAINING_FILE_PATH:
+            train_set = pd.read_json(config.TRAINING_FILE_PATH, compression="gzip")
+        else:
+            raise ValueError(f"Unsupported file type: {config.TRAINING_FILE_PATH}")
+        
+        # Create training examples
+        training_examples = []
+
+        for index, row in train_set.iterrows():
+            product_1 = serialize_product(row, "left")
+            product_2 = serialize_product(row, "right")
+            response = transform_label(row.get("label"))  # Convert label to string
+            
+            # check if the row has an explanation
+            if "explanation" in row.index:
+                response = row.get("explanation")
+            
+            prompt = insert_product_descriptions(PROMPT_TEMPLATE, product_1, product_2)
+            training_examples.append({"prompt": prompt, "completion": response})
+
+        # Convert list of dictionaries to DataFrame and save as CSV
+        pd.DataFrame(training_examples).to_csv("temp.csv", index=False)
+        
+        # Convert to Dataset format
+        dataset = load_dataset('csv', data_files="temp.csv", split="train")
+        
+        # print the first 5 rows
+        print(dataset[:5])
+    else:
+        train_set = pd.read_pickle(config.TRAINING_FILE_PATH, compression="gzip")
+        # Create training examples
+        training_examples = []
+
+        for index, row in train_set.iterrows():
+            product_1 = serialize_product(row, "left")
+            product_2 = serialize_product(row, "right")
+            label = str(row.get("label"))  # Convert label to string
+            
+            prompt, response = create_training_example(PROMPT_TEMPLATE, product_1, product_2, label)
+            training_examples.append({"prompt": prompt, "completion": response})
+
+        # Convert to Dataset format
+        dataset = Dataset.from_list(training_examples)
     
     lr = config.LEARNING_RATES
     # Create unique run name and output directory
@@ -156,7 +254,7 @@ def main():
     
     # Initialize wandb
     wandb.init(
-        project="First Paper",
+        project="Example Selection",
         name=run_name,
         tags=[config.DATASET_NAME, "simple", f"lr_{lr}"],
         config={"learning_rate": lr},
@@ -177,7 +275,7 @@ def main():
         "gradient_accumulation_steps": config.GRAD_ACCUMULATION_STEPS,
         "output_dir": str(output_dir),
         "training_params": {
-            "max_seq_length": 240,
+            "max_seq_length": MAX_SEQ_LENGTH,
             "packing": True,
             "optim": "paged_adamw_32bit",
             "fp16": True,
@@ -195,7 +293,7 @@ def main():
         }
     }
     
-    # Save the configuration to a JSON file
+    # Save the configuration to a JSON file0
     config_file = output_dir / "runconfig.json"
     with open(config_file, 'w') as f:
         json.dump(run_config, f, indent=4)
@@ -217,15 +315,20 @@ def main():
         peft_config=get_lora_config(),
         processing_class=tokenizer,
     )
-    
+        
     # Train model
     trainer.train()
     
+    
     # Save artifacts
-    save_artifacts(trainer, str(output_dir), run_name)
+    #save_artifacts(trainer, str(output_dir), run_name)
     
     # Close wandb run
     wandb.finish()
+    
+    # Return the output directory
+    return run_config.get("output_dir")
 
 if __name__ == "__main__":
-    main()
+    output_dir = main()
+    print(f"Output Directory: {output_dir}")

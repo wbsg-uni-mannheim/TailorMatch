@@ -1,0 +1,7 @@
+run_name,task,accuracy,f1_score,precision,recall
+fine-tune-wdc-swapping_0_25,"('domain-complex-free',)",0.9586314847942756,0.825964252116651,0.7715289982425307,0.888663967611336
+fine-tune-wdc-small-regular,"('domain-complex-force',)",0.9555555555555556,0.8207885304659498,0.7435064935064936,0.916
+fine-tune-wdc-nplaug,"('domain-complex-free',)",0.9404444444444444,0.7814029363784666,0.6597796143250688,0.958
+fine-tune-wdc-random-swapping,"('domain-simple-force',)",0.9333333333333332,0.7615262321144675,0.6319261213720316,0.958
+fine-tune-wdc-simple-swapping,"('domain-complex-free',)",0.9457777777777778,0.7935702199661591,0.6876832844574781,0.938
+baseline-wdc,"('domain-complex-force',)",0.9511111111111112,0.8053097345132744,0.7222222222222222,0.91

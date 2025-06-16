@@ -1,0 +1,13 @@
+Task,Accuracy,F1 Score,Precision,Recall,Num -1 Responses,Dataset
+domain-complex-free (Product),0.888,0.0,0.0,0.0,4,wdc-fullsize
+domain-complex-free (Product),0.8406666666666667,0.5733634311512416,0.6580310880829016,0.508,460,wdc-fullsize
+domain-simple-free (Product),0.682,0.2264808362369338,0.8783783783783784,0.13,1356,wdc-fullsize
+domain-complex-force (Product),0.8704444444444445,0.58972554539057,0.4549402823018458,0.838,0,wdc-fullsize
+domain-simple-force (Product),0.9211111111111111,0.5007032348804501,0.8436018957345972,0.356,0,wdc-fullsize
+domain-complex-free (Product),0.94,0.8,0.7142857142857143,0.9090909090909091,1,wdc-fullsize
+domain-complex-free (Product),0.0,0.0,0.0,0.0,100,wdc-fullsize
+domain-complex-free (Product),0.89,0.5,0.5555555555555556,0.45454545454545453,2,wdc-fullsize
+domain-complex-free (Product),0.89,0.0,0.0,0.0,0,wdc-fullsize
+domain-complex-free (Product),0.0,0.0,0.0,0.0,100,wdc-fullsize
+domain-complex-free (Product),0.88,0.5217391304347826,0.5,0.5454545454545454,2,wdc-fullsize
+domain-complex-free (Product),0.0,0.0,0.0,0.0,100,wdc-fullsize
