@@ -11,48 +11,68 @@ from tqdm import tqdm
 load_dotenv()
 
 # Function to load a Hugging Face text generation pipeline with specific settings
-def load_pipeline(model_path, batch_size):
+def load_pipeline(model_path, batch_size, enable_compile=True):
     """
-    Loads and initializes a Hugging Face model and tokenizer.
-
-    Args:
-        model_path (str): The path to the pre-trained model.
-        batch_size (int): The batch size to use for text generation.
-
-    Returns:
-        tuple: A tuple containing the model and tokenizer.
+    Loads model with torch.compile optimization
     """
-    # Load the tokenizer using the specified model path and an optional Hugging Face token from the environment
+    # CRITICAL: Load tokenizer from the SAME checkpoint as the model
+    # This ensures vocabulary sizes match
     tokenizer = AutoTokenizer.from_pretrained(
-        model_path,
-        token=os.getenv("HUGGINGFACE_TOKEN")
+        model_path,  # Use checkpoint path, not base model
+        token=os.getenv("HUGGINGFACE_TOKEN"),
+        trust_remote_code=True,  # Match training settings
     )
 
-    # Set padding side and pad token ID for the tokenizer
-    tokenizer.padding_side = "left"
-    tokenizer.pad_token_id = tokenizer.eos_token_id
-
-    # Specify the compute data type (half-precision floating point)
-    compute_dtype = getattr(torch, "float16")
-
-    # Configure the model for 4-bit quantization using BitsAndBytesConfig
-    quant_config = BitsAndBytesConfig(
-        load_in_4bit=True,
-        bnb_4bit_quant_type="nf4",
-        bnb_4bit_compute_dtype=compute_dtype,
-        bnb_4bit_use_double_quant=False,
-    )
-
-    # Load the model with the specified quantization configuration and environment settings
+    # Match training tokenizer settings EXACTLY
+    tokenizer.padding_side = "right"  # ← Same as training
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+    
+    # Match training dtype and NO quantization
+    compute_dtype = torch.float16  # Same as training
+    
+    # Load model WITHOUT quantization to match training
     model = AutoModelForCausalLM.from_pretrained(
         model_path,
         device_map="auto",
-        quantization_config=quant_config,
         token=os.getenv("HUGGINGFACE_TOKEN"),
         cache_dir=os.getenv("CACHE_DIR"),
-        torch_dtype=compute_dtype,
+        torch_dtype=compute_dtype,  # FP16, no quantization
+        trust_remote_code=True,
     )
-
+    
+    # SAFETY CHECK: Ensure vocabularies match
+    model_vocab_size = model.get_input_embeddings().num_embeddings
+    tokenizer_vocab_size = len(tokenizer)
+    
+    if tokenizer_vocab_size != model_vocab_size:
+        print(f"WARNING: Vocab mismatch detected!")
+        print(f"  Model vocab size: {model_vocab_size}")
+        print(f"  Tokenizer vocab size: {tokenizer_vocab_size}")
+        print(f"  Attempting to resize model embeddings...")
+        
+        # Try to fix the mismatch
+        model.resize_token_embeddings(tokenizer_vocab_size)
+        model.config.vocab_size = tokenizer_vocab_size
+        
+        print(f"  Fixed: Model now has {model.get_input_embeddings().num_embeddings} embeddings")
+    
+    print(f"✓ Model and tokenizer loaded successfully")
+    print(f"  Vocabulary size: {len(tokenizer)}")
+    print(f"  Model embeddings: {model.get_input_embeddings().num_embeddings}")
+    print(f"  Padding side: {tokenizer.padding_side}")
+    
+    # 🚀 TORCH COMPILE OPTIMIZATION
+    if enable_compile:
+        print("🔥 Compiling model for faster inference...")
+        model = torch.compile(
+            model, 
+            mode="reduce-overhead",  # Best for inference
+            fullgraph=False,        # More robust compilation
+            dynamic=True            # Handle variable sequence lengths
+        )
+        print("✅ Model compilation complete!")
+    
     return model, tokenizer
 
 # Function to generate text completions using a Hugging Face pipeline
@@ -185,3 +205,89 @@ def save_results(results_df, dataset_name, checkpoint_folder):
     file_path = os.path.join(directory, f"{now.strftime('%Y-%m-%d-%H-%M-%S')}_lama3.json")
     results_df.to_json(file_path)
     print(f"Results saved to {file_path}")
+
+class DynamicBatcher:
+    def __init__(self, max_batch_size=8, max_sequence_length=1024):
+        self.max_batch_size = max_batch_size
+        self.max_sequence_length = max_sequence_length
+    
+    def create_batches(self, messages, tokenizer):
+        """
+        Creates optimally sized batches based on sequence lengths
+        """
+        # Tokenize all messages first to get lengths
+        tokenized_data = []
+        for i, message in enumerate(messages):
+            if isinstance(message, list) and len(message) > 0 and isinstance(message[0], dict):
+                text_input = message[0].get('content', '') + " Answer:"
+            else:
+                text_input = message
+            
+            tokens = tokenizer(text_input, return_tensors="pt", truncation=True, max_length=self.max_sequence_length)
+            seq_length = tokens['input_ids'].shape[1]
+            
+            tokenized_data.append({
+                'index': i,
+                'text': text_input,
+                'tokens': tokens,
+                'length': seq_length,
+                'message': message
+            })
+        
+        # Sort by length for better batching efficiency
+        tokenized_data.sort(key=lambda x: x['length'])
+        
+        # Create batches
+        batches = []
+        current_batch = []
+        
+        for item in tokenized_data:
+            # Check if adding this item would exceed limits
+            if len(current_batch) >= self.max_batch_size:
+                # Batch is full, start new one
+                batches.append(current_batch)
+                current_batch = [item]
+            elif current_batch and self._would_exceed_memory(current_batch + [item]):
+                # Would use too much memory, start new batch
+                batches.append(current_batch)
+                current_batch = [item]
+            else:
+                # Add to current batch
+                current_batch.append(item)
+        
+        # Add final batch
+        if current_batch:
+            batches.append(current_batch)
+        
+        return batches
+    
+    def _would_exceed_memory(self, batch_items):
+        """
+        Estimate if batch would use too much memory
+        """
+        max_length = max(item['length'] for item in batch_items)
+        total_tokens = len(batch_items) * max_length
+        
+        # Rough heuristic: avoid batches with >8K total tokens
+        return total_tokens > 8192
+
+def prepare_batch_inputs(batch_items, tokenizer, device):
+    """
+    Prepare a batch for model input with optimal padding
+    """
+    texts = [item['text'] for item in batch_items]
+    
+    # Tokenize with padding to the longest sequence in THIS batch
+    # (not global max - this is the key optimization!)
+    batch_encoding = tokenizer(
+        texts,
+        return_tensors="pt",
+        padding=True,  # Pad to longest in batch
+        truncation=True,
+        max_length=1024  # Still respect global limits
+    )
+    
+    # Move to device
+    batch_inputs = {k: v.to(device) for k, v in batch_encoding.items()}
+    
+    return batch_inputs, texts

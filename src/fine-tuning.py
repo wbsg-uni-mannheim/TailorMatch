@@ -67,7 +67,7 @@ class TrainingConfig:
         self.DATASET_NAME = "Walmart-Amazon with explanations"
         self.LEARNING_RATES = 2.00E-04
         self.SEED = 42
-        self.MAX_EPOCHS = 30
+        self.MAX_EPOCHS = 15
         self.BATCH_SIZE = 4
         self.GRAD_ACCUMULATION_STEPS = 20
         
@@ -221,14 +221,7 @@ def main():
             prompt = insert_product_descriptions(PROMPT_TEMPLATE, product_1, product_2)
             training_examples.append({"prompt": prompt, "completion": response})
 
-        # Convert list of dictionaries to DataFrame and save as CSV
-        pd.DataFrame(training_examples).to_csv("temp.csv", index=False)
-        
-        # Convert to Dataset format
-        dataset = load_dataset('csv', data_files="temp.csv", split="train")
-        
-        # print the first 5 rows
-        print(dataset[:5])
+        dataset = Dataset.from_list(training_examples)
     else:
         train_set = pd.read_pickle(config.TRAINING_FILE_PATH, compression="gzip")
         # Create training examples

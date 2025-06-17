@@ -24,9 +24,9 @@ DEFAULT_CHECKPOINT_FOLDER = "results/meta-llama/Meta-Llama-3.1-8B-Instruct/swapp
 
 VALIDATION_PROMPT_PATH = "./prompts/test_prompt.json"
 #VALIDATION_FILE_PATH = "./data/wdc/validation/preprocessed_wdcproducts80cc20rnd000un_valid_small.pkl"
-VALIDATION_FILE_PATH = "./data/walmart-amazon/walmart-amazon-valid.json.gz"
+VALIDATION_FILE_PATH = "./data/walmart-amazon/walmart-amazon-valid.csv"
 
-TEST_PROMPTS = "./prompts/domain_promts.json"
+TEST_PROMPTS = "./prompts/test_prompt.json"
 
 batch_size = 32
 device_map = "auto"
@@ -58,7 +58,7 @@ def run_validation(checkpoint_path, config, wandb_run_id=None):
         torch.cuda.empty_cache()
         
         # Load the pipeline
-        hf_pipeline = load_pipeline(checkpoint_path, config['batch_size'])
+        model, tokenizer = load_pipeline(checkpoint_path, config['batch_size'])
         
         # Force garbage collection
         import gc
@@ -92,7 +92,7 @@ def run_validation(checkpoint_path, config, wandb_run_id=None):
             ]
             
             try:
-                responses = generate_answers(messages, hf_pipeline)
+                responses = generate_answers(messages, model, tokenizer)
             except Exception as e:
                 print(f"Error during generation: {e}")
                 responses = [""] * len(df)
@@ -143,8 +143,10 @@ def run_validation(checkpoint_path, config, wandb_run_id=None):
         
     finally:
         # Clean up resources
-        if 'hf_pipeline' in locals():
-            del hf_pipeline
+        if 'model' in locals():
+            del model
+        if 'tokenizer' in locals():
+            del tokenizer
         torch.cuda.empty_cache()
         gc.collect()
 
